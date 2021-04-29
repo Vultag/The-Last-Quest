@@ -1,0 +1,111 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://images/map3d.png" type="Texture" id=1]
+[ext_resource path="res://images/map1e.png" type="Texture" id=2]
+[ext_resource path="res://Scènes/Scène_intro.gd" type="Script" id=3]
+[ext_resource path="res://TEXT.tscn" type="PackedScene" id=4]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "début",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 1 ) ],
+"loop": true,
+"name": "fin",
+"speed": 5.0
+} ]
+
+[sub_resource type="Animation" id=2]
+resource_name = "fin"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("img:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("img:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "fin" ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "off"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("img:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "début" ]
+}
+
+[node name="Scène_intro" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="img" type="AnimatedSprite" parent="."]
+self_modulate = Color( 1, 1, 1, 0 )
+z_index = -10
+frames = SubResource( 1 )
+animation = "début"
+centered = false
+
+[node name="Timer_text_1" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+autostart = true
+
+[node name="TEXT" parent="." instance=ExtResource( 4 )]
+margin_left = 5.0
+margin_top = 426.478
+margin_right = 1920.0
+margin_bottom = 1377.48
+bbcode_text = "test"
+text = "test"
+
+[node name="Timer_text_2" type="Timer" parent="."]
+wait_time = 6.0
+one_shot = true
+
+[node name="Timer_text_3" type="Timer" parent="."]
+wait_time = 5.5
+one_shot = true
+
+[node name="Timer_text_4" type="Timer" parent="."]
+wait_time = 6.5
+one_shot = true
+
+[node name="fin" type="Timer" parent="."]
+wait_time = 8.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/fin = SubResource( 2 )
+anims/off = SubResource( 3 )
+[connection signal="timeout" from="Timer_text_1" to="." method="_on_Timer_start_timeout"]
+[connection signal="timeout" from="Timer_text_2" to="." method="_on_Timer_text_2_timeout"]
+[connection signal="timeout" from="Timer_text_3" to="." method="_on_Timer_text_3_timeout"]
+[connection signal="timeout" from="Timer_text_4" to="." method="_on_Timer_text_4_timeout"]
+[connection signal="timeout" from="fin" to="." method="_on_fin_timeout"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

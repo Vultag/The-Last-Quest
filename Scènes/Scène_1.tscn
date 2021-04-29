@@ -1,0 +1,471 @@
+[gd_scene load_steps=43 format=2]
+
+[ext_resource path="res://graph/symb/symbol_4.png" type="Texture" id=1]
+[ext_resource path="res://graph/symb/symbol_5.png" type="Texture" id=2]
+[ext_resource path="res://graph/symb/symbol_2.png" type="Texture" id=3]
+[ext_resource path="res://images/map1c.png" type="Texture" id=4]
+[ext_resource path="res://images/map1a.png" type="Texture" id=5]
+[ext_resource path="res://images/map1b.png" type="Texture" id=6]
+[ext_resource path="res://images/map3d.png" type="Texture" id=7]
+[ext_resource path="res://son/forêt.wav" type="AudioStream" id=8]
+[ext_resource path="res://graph/symb/symbol_3.png" type="Texture" id=9]
+[ext_resource path="res://images/map1d.png" type="Texture" id=10]
+[ext_resource path="res://grotte.tres" type="Animation" id=11]
+[ext_resource path="res://INVENTAIRE.tscn" type="PackedScene" id=12]
+[ext_resource path="res://graph/cache_vide.png" type="Texture" id=13]
+[ext_resource path="res://graph/DOOR/Door_open_3.png" type="Texture" id=14]
+[ext_resource path="res://graph/DOOR/Door_open_5.png" type="Texture" id=15]
+[ext_resource path="res://graph/DOOR/Door_open_6.png" type="Texture" id=16]
+[ext_resource path="res://graph/DOOR/Door_open_1.png" type="Texture" id=17]
+[ext_resource path="res://graph/DOOR/Door_open_7.png" type="Texture" id=18]
+[ext_resource path="res://graph/symb/symbol_1.png" type="Texture" id=19]
+[ext_resource path="res://graph/DOOR/DOOR.png" type="Texture" id=20]
+[ext_resource path="res://graph/DOOR/Door_open_4.png" type="Texture" id=21]
+[ext_resource path="res://graph/cache_with_key.png" type="Texture" id=22]
+[ext_resource path="res://graph/DOOR/Door_open_2.png" type="Texture" id=23]
+[ext_resource path="res://graph/cache.png" type="Texture" id=24]
+[ext_resource path="res://Scènes/Scène_1.gd" type="Script" id=26]
+[ext_resource path="res://ColorRect.tscn" type="PackedScene" id=27]
+[ext_resource path="res://TEXT.tscn" type="PackedScene" id=28]
+[ext_resource path="res://Perso.tscn" type="PackedScene" id=29]
+
+[sub_resource type="Animation" id=1]
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("lumiere grotte:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.2, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.164706 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 111.597, 49.9388 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 108.489, 34.4977 )
+
+[sub_resource type="SpriteFrames" id=4]
+animations = [ {
+"frames": [ ExtResource( 1 ) ],
+"loop": true,
+"name": "4",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "5",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 9 ) ],
+"loop": true,
+"name": "3",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 19 ) ],
+"loop": true,
+"name": "1",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "2",
+"speed": 5.0
+} ]
+
+[sub_resource type="CircleShape2D" id=5]
+radius = 103.799
+
+[sub_resource type="CircleShape2D" id=6]
+radius = 106.864
+
+[sub_resource type="CircleShape2D" id=7]
+radius = 118.067
+
+[sub_resource type="SpriteFrames" id=8]
+animations = [ {
+"frames": [ ExtResource( 13 ) ],
+"loop": true,
+"name": "empty",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 22 ) ],
+"loop": true,
+"name": "full",
+"speed": 5.0
+} ]
+
+[sub_resource type="Animation" id=9]
+resource_name = "open"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0.868652, 110.393 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AnimationPlayer:playback_speed")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 1.0, 0.0 ]
+}
+
+[sub_resource type="CircleShape2D" id=10]
+radius = 191.917
+
+[sub_resource type="Animation" id=11]
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("transition fin:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=12]
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("debut:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="SpriteFrames" id=13]
+animations = [ {
+"frames": [ ExtResource( 20 ) ],
+"loop": true,
+"name": "close",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 17 ), ExtResource( 23 ), ExtResource( 14 ), ExtResource( 21 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 18 ) ],
+"loop": false,
+"name": "open",
+"speed": 5.0
+} ]
+
+[sub_resource type="CircleShape2D" id=14]
+radius = 111.501
+
+[node name="scène_1" type="Node2D"]
+script = ExtResource( 26 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Perso" parent="." instance=ExtResource( 29 )]
+position = Vector2( 1598.4, 780.129 )
+collision_layer = 3
+collision_mask = 3
+
+[node name="background" type="Sprite" parent="."]
+z_index = -10
+texture = ExtResource( 5 )
+centered = false
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="change_scene_timer" type="Timer" parent="."]
+wait_time = 2.0
+
+[node name="buissons" type="Sprite" parent="."]
+position = Vector2( 962.294, 539.143 )
+texture = ExtResource( 6 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="lumiere grotte" type="Sprite" parent="."]
+self_modulate = Color( 1, 1, 1, 0.133333 )
+position = Vector2( 958.294, 543.143 )
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="AnimLumiereGrotte" type="AnimationPlayer" parent="."]
+anims/GrotteActive = SubResource( 1 )
+anims/LumiereGrotteScintille = ExtResource( 11 )
+
+[node name="transition fin" type="Sprite" parent="."]
+self_modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 963.964, 539.143 )
+z_index = 10
+texture = ExtResource( 10 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="debut" type="Sprite" parent="."]
+self_modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 966.294, 539.143 )
+z_index = 5
+texture = ExtResource( 7 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="MUR" type="StaticBody2D" parent="."]
+position = Vector2( 0.00012207, 0 )
+
+[node name="MUR" type="CollisionPolygon2D" parent="MUR"]
+position = Vector2( -6.10352e-05, 0 )
+polygon = PoolVector2Array( 279.863, 351.361, 449.236, 781.922, 509.552, 815.032, 449.97, 810.389, 381.878, 769.379, 348.605, 729.142, 360.212, 707.476, 301.404, 572.839, 131.489, 615.589, 171.726, 712.312, 223.569, 803.618, 217.379, 865.52, 243.371, 929.552, 308.368, 964.372, 435.273, 973, 897.186, 1016.17, 1577.1, 1026.96, 1738.33, 925.235, 1820.96, 826.782, 1762.94, 745.91, 1632.84, 777.556, 1543.18, 758.217, 1495.71, 661.522, 1365.62, 666.796, 1316.39, 752.943, 1223.21, 754.701, 1145.85, 622.844, 1107.18, 638.667, 1047.4, 631.635, 966.529, 624.602, 913.787, 670.313, 880.383, 673.829, 757.317, 624.602, 618.428, 665.038, 523.491, 591.199, 497.471, 801.517, 439.103, 724.813, 305.765, 390.213, 1033.17, -28.5301, 2088.66, -30.6886, 2064.92, 1152.15, 208.634, 1165.1, -46.0657, 1121.93, -63.3334, -65.2241 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="enter_cave" type="Area2D" parent="MUR"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MUR/enter_cave"]
+position = Vector2( 226.47, 701.338 )
+rotation = -0.436332
+shape = SubResource( 2 )
+
+[node name="PORTE_block" type="CollisionShape2D" parent="MUR"]
+position = Vector2( 242.663, 765.247 )
+rotation = -0.507891
+shape = SubResource( 3 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="pillier_1" type="AnimatedSprite" parent="."]
+self_modulate = Color( 0.980392, 0.686275, 0.352941, 1 )
+position = Vector2( 1591.63, 589.765 )
+scale = Vector2( 0.880505, 0.880505 )
+z_index = -1
+frames = SubResource( 4 )
+animation = "3"
+
+[node name="Button_1" type="Button" parent="pillier_1"]
+modulate = Color( 1, 1, 1, 0 )
+show_behind_parent = true
+margin_left = -174.0
+margin_top = -175.0
+margin_right = 177.0
+margin_bottom = 180.0
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="zone_1" type="Area2D" parent="pillier_1"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pillier_1/zone_1"]
+position = Vector2( 1.13574, 186.257 )
+shape = SubResource( 5 )
+
+[node name="pillier_2" type="AnimatedSprite" parent="."]
+self_modulate = Color( 0.980392, 0.686275, 0.352941, 1 )
+position = Vector2( 1266.9, 590.391 )
+scale = Vector2( 0.861834, 0.861834 )
+z_index = -1
+frames = SubResource( 4 )
+animation = "2"
+
+[node name="Button_2" type="Button" parent="pillier_2"]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = -185.608
+margin_top = -186.696
+margin_right = 201.392
+margin_bottom = 190.304
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="zone_2" type="Area2D" parent="pillier_2"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pillier_2/zone_2"]
+position = Vector2( 6.96191, 167.086 )
+shape = SubResource( 6 )
+
+[node name="pillier_3" type="AnimatedSprite" parent="."]
+self_modulate = Color( 0.980392, 0.686275, 0.352941, 1 )
+position = Vector2( 889.734, 578.368 )
+scale = Vector2( 0.446906, 0.446906 )
+z_index = -1
+frames = SubResource( 4 )
+animation = "5"
+
+[node name="Button_3" type="Button" parent="pillier_3"]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_left = -276.0
+margin_top = -284.0
+margin_right = 285.0
+margin_bottom = 265.0
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="zone_3" type="Area2D" parent="pillier_3"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pillier_3/zone_3"]
+position = Vector2( 13.51, 216.158 )
+shape = SubResource( 7 )
+
+[node name="cache" type="AnimatedSprite" parent="."]
+position = Vector2( 1081.6, 594.189 )
+scale = Vector2( 0.245314, 0.245314 )
+z_index = -1
+frames = SubResource( 8 )
+animation = "full"
+
+[node name="Button" type="Button" parent="cache"]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_left = -75.0
+margin_top = -57.0
+margin_right = 45.0
+margin_bottom = -20.0
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="cache"]
+anims/open = SubResource( 9 )
+
+[node name="Sprite" type="Sprite" parent="cache"]
+texture = ExtResource( 24 )
+
+[node name="zone_cache" type="Area2D" parent="cache"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="cache/zone_cache"]
+position = Vector2( 1.31934, 110.784 )
+shape = SubResource( 10 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="ColorRect" parent="." instance=ExtResource( 27 )]
+color = Color( 1, 1, 1, 0 )
+
+[node name="AnimFIN" type="AnimationPlayer" parent="."]
+anims/AnimFIN = SubResource( 11 )
+
+[node name="AnimDebut" type="AnimationPlayer" parent="."]
+anims/AnimDebut = SubResource( 12 )
+
+[node name="TEXT" parent="." instance=ExtResource( 28 )]
+
+[node name="INVENTAIRE" parent="." instance=ExtResource( 12 )]
+z_index = 1
+
+[node name="Button_inv2" type="Button" parent="INVENTAIRE"]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_left = -46.0
+margin_top = -56.0
+margin_right = 46.0
+margin_bottom = 15.0
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="DOOR" type="AnimatedSprite" parent="."]
+position = Vector2( 280.515, 580.51 )
+scale = Vector2( 1.33116, 1.33116 )
+z_index = -1
+frames = SubResource( 13 )
+animation = "close"
+playing = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Node2D" type="Node2D" parent="DOOR"]
+rotation = -0.380482
+z_index = 5
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Button_DOOR" type="Button" parent="DOOR/Node2D"]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_left = -164.504
+margin_top = -179.637
+margin_right = 16.4956
+margin_bottom = 131.363
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="zone_porte" type="Area2D" parent="DOOR"]
+collision_layer = 2
+collision_mask = 2
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DOOR/zone_porte"]
+position = Vector2( -27.1191, 138.308 )
+shape = SubResource( 14 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="son_foret" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+[connection signal="timeout" from="change_scene_timer" to="." method="_on_change_scene_timer_timeout"]
+[connection signal="body_entered" from="MUR/enter_cave" to="." method="_on_enter_cave_body_entered"]
+[connection signal="pressed" from="pillier_1/Button_1" to="." method="_on_Button_1_pressed"]
+[connection signal="body_entered" from="pillier_1/zone_1" to="." method="_on_zone_1_body_entered"]
+[connection signal="body_exited" from="pillier_1/zone_1" to="." method="_on_zone_1_body_exited"]
+[connection signal="pressed" from="pillier_2/Button_2" to="." method="_on_Button_2_pressed"]
+[connection signal="body_entered" from="pillier_2/zone_2" to="." method="_on_zone_2_body_entered"]
+[connection signal="body_exited" from="pillier_2/zone_2" to="." method="_on_zone_2_body_exited"]
+[connection signal="pressed" from="pillier_3/Button_3" to="." method="_on_Button_3_pressed"]
+[connection signal="body_entered" from="pillier_3/zone_3" to="." method="_on_zone_3_body_entered"]
+[connection signal="body_exited" from="pillier_3/zone_3" to="." method="_on_zone_3_body_exited"]
+[connection signal="pressed" from="cache/Button" to="." method="_on_Button_pressed"]
+[connection signal="body_entered" from="cache/zone_cache" to="." method="_on_zone_cache_body_entered"]
+[connection signal="body_exited" from="cache/zone_cache" to="." method="_on_zone_cache_body_exited"]
+[connection signal="pressed" from="INVENTAIRE/Button_inv2" to="." method="_on_Button_inv2_pressed"]
+[connection signal="pressed" from="DOOR/Node2D/Button_DOOR" to="." method="_on_Button_DOOR_pressed"]
+[connection signal="body_entered" from="DOOR/zone_porte" to="." method="_on_zone_porte_body_entered"]
+[connection signal="body_exited" from="DOOR/zone_porte" to="." method="_on_zone_porte_body_exited"]
+[connection signal="finished" from="son_foret" to="." method="_on_son_foret_finished"]
